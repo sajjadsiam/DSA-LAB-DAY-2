@@ -2,22 +2,6 @@
 
 using namespace std;
 
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void Sort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
-            }
-        }
-    }
-}
-
 int main() {
     
     int n;
@@ -35,19 +19,24 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    
-    
-    Sort(arr, n);
-    
-    cout << "Sorted elements: ";
+
+    cout << "Entered elements: ";
     for (int i = 0; i < n; i++) {
         cout << arr[i] << " ";
     }
-    
-    int maxElement = arr[n - 1];
-    int maxIndex = n - 1;
-    
+
+    int* ptr = arr; 
+    int maxElement = *ptr; 
+    int maxIndex = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (*ptr < arr[i]) {
+            maxElement = arr[i];
+            maxIndex = i;
+        }
+    }
+
     cout << "\nMaximum element: " << maxElement << " at index " << maxIndex << endl;
-    
+
     return 0;
 }
