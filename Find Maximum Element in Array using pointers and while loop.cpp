@@ -17,14 +17,16 @@ int main() {
     
     int i = 0;
     cout << "Enter elements: ";
-    do {
+    while (i < n) {
         cin >> arr[i];
         i++;
-    } while (i < n);
+    }
 
     cout << "Entered elements: ";
-    for (int i = 0; i < n; i++) {
+    i = 0;
+    while (i < n) {
         cout << arr[i] << " ";
+        i++;
     }
 
     int* ptr = arr; 
@@ -32,16 +34,15 @@ int main() {
     int maxIndex = 0;
 
     i = 1;
-    do {
+    while (i < n) {
         if (*ptr < arr[i]) {
             maxElement = arr[i];
             maxIndex = i;
         }
         i++;
-    } while (i < n);
+    }
 
     cout << "\nMaximum element: " << maxElement << " at index " << maxIndex << endl;
 
     return 0;
 }
-
