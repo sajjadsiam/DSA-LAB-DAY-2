@@ -15,10 +15,12 @@ int main() {
 
     int arr[n];
     
+    int i = 0;
     cout << "Enter elements: ";
-    for (int i = 0; i < n; i++) {
+    do {
         cin >> arr[i];
-    }
+        i++;
+    } while (i < n);
 
     cout << "Entered elements: ";
     for (int i = 0; i < n; i++) {
@@ -29,14 +31,17 @@ int main() {
     int maxElement = *ptr; 
     int maxIndex = 0;
 
-    for (int i = 1; i < n; i++) {
+    i = 1;
+    do {
         if (*ptr < arr[i]) {
             maxElement = arr[i];
             maxIndex = i;
         }
-    }
+        i++;
+    } while (i < n);
 
     cout << "\nMaximum element: " << maxElement << " at index " << maxIndex << endl;
 
     return 0;
 }
+
