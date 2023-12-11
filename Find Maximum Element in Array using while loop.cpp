@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     
     int n;
-    cout << "array size: ";
+    cout << "Enter the size of the array: ";
     cin >> n;
     
     if (n <= 0) {
@@ -15,6 +15,7 @@ int main() {
     
     int arr[n];
     
+    cout << "Enter array elements: ";
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
