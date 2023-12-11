@@ -479,6 +479,211 @@ int main() {
 
 ```
 
+### 10. Find Maximum Element in Array using pointers and sorting function
+
+- **Overview:** This program takes user input to create an array, displays the entered elements, and finds the maximum element along with its index in the array.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void Sort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    
+    if (n <= 0) {
+        cout << "Array is empty." << endl;
+        return 0;
+    }
+
+    int arr[n];
+    
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    cout << "Entered elements: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    Sort(arr, n);
+    int maxElement = arr[n - 1];
+    int maxIndex = n - 1;
+
+    cout << "\nMaximum element: " << maxElement << " at index " << maxIndex << endl;
+    
+    return 0;
+}
+
+```
+
+### 11. Find Maximum Element in Array using pointers and structure
+
+- **Overview:** This program takes user input to create an array, displays the entered elements, and finds the maximum element along with its index in the array.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+struct ArrayInfo {
+    int *arr;
+    int size;
+};
+
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void Sort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
+
+ArrayInfo createArray() {
+    ArrayInfo arrayInfo;
+
+    cout << "Enter the size of the array: ";
+    cin >> arrayInfo.size;
+
+    if (arrayInfo.size <= 0) {
+        cout << "Array is empty." << endl;
+        arrayInfo.arr = nullptr;
+    } else {
+        arrayInfo.arr = new int[arrayInfo.size];
+
+        cout << "Enter elements: ";
+        for (int i = 0; i < arrayInfo.size; i++) {
+            cin >> arrayInfo.arr[i];
+        }
+    }
+
+    return arrayInfo;
+}
+
+void displayArray(const ArrayInfo &arrayInfo) {
+    cout << "Entered elements: ";
+    for (int i = 0; i < arrayInfo.size; i++) {
+        cout << arrayInfo.arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int findMaxElementIndex(const ArrayInfo &arrayInfo) {
+    int maxIndex = 0;
+
+    for (int i = 1; i < arrayInfo.size; i++) {
+        if (arrayInfo.arr[i] > arrayInfo.arr[maxIndex]) {
+            maxIndex = i;
+        }
+    }
+
+    return maxIndex;
+}
+
+int main() {
+    ArrayInfo arrayInfo = createArray();
+
+    if (arrayInfo.arr == nullptr) {
+        return 0;
+    }
+
+    displayArray(arrayInfo);
+
+
+    int maxIndex = findMaxElementIndex(arrayInfo);
+
+    cout << "Maximum element: " << arrayInfo.arr[maxIndex] << " at index " << maxIndex << endl;
+
+    delete[] arrayInfo.arr;
+
+    return 0;
+}
+    
+```
+
+### 12. Find Maximum Element in Array using pointers and recursion
+
+- **Overview:** This program takes user input to create an array, displays the entered elements, and finds the maximum element along with its index in the array.
+
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int findMaxElement(const int *arr, int size) {
+  
+    if (size == 1) {
+        return *arr;
+    }
+
+    int maxInRest = findMaxElement(arr + 1, size - 1);
+
+    return (*arr > maxInRest) ? *arr : maxInRest;
+}
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Array is empty." << endl;
+        return 0;
+    }
+
+    int arr[n];
+
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Entered elements: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    int maxElement = findMaxElement(arr, n);
+
+    cout << "\nMaximum element: " << maxElement << endl;
+
+    return 0;
+}
+
+```
+
+
+
+
 
 
 
