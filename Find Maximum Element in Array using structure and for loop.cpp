@@ -2,6 +2,11 @@
 
 using namespace std;
 
+struct MaxInfo {
+    int element;
+    int index;
+};
+
 int main() {
     
     int n;
@@ -25,17 +30,18 @@ int main() {
         cout << arr[i] << " ";
     }
     
-    int maxElement = arr[0];
-    int maxIndex = 0;
+    MaxInfo maxData;
+    maxData.element = arr[0];
+    maxData.index = 0;
     
     for (int i = 0; i < n; i++) {
-        if (maxElement < arr[i]) {
-            maxElement = arr[i];
-            maxIndex = i;
+        if (maxData.element < arr[i]) {
+            maxData.element = arr[i];
+            maxData.index = i;
         }
     }
     
-    cout << "\nMaximum element: " << maxElement << " at index " << maxIndex << endl;
+    cout << "\nMaximum element: " << maxData.element << " at index " << maxData.index << endl;
     
     return 0;
 }
